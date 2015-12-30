@@ -1,0 +1,4 @@
+WhiteSpace <- Space
+            / Space WhiteSpace
+
+Space <- \u0020 / \u0009 / \u000B / \u000C

@@ -1,0 +1,73 @@
+IntegerLiteral <- Integer
+                / Integer IntegerSuffix
+
+Integer <- DecimalInteger
+         / BinaryInteger
+         / HexadecimalInteger
+
+IntegerSuffix <- 'l'  / 'L'
+               / 'u'  / 'U'
+               / 'lu' / 'lU' / 'Lu' / 'LU'
+               / 'ul' / 'uL' / 'Ul' / 'UL'
+
+DecimalInteger <- '0'
+                / '0' NonZeroDigit
+                / NonZeroDigit DecimalDigitsUS
+
+BinaryInteger <- BinPrefix BinaryDigits
+
+BinPrefix <- '0b' / '0B'
+
+HexadecimalInteger <- HexPrefix HexDigitsNoSingleUS
+
+NonZeroDigit <- '1' / '2' / '3' / '4' / '5' / '6' / '7' / '8' / '9'
+
+DicimalDigits <- DecimalDigit
+               / DecimalDigit DecimalDigits
+
+DicimalDigitsUS <- DicimalDigitUS
+                 / DicimalDigitUS DicimalDigitsUS
+
+DicimalDigitsNoSingleUS <- DicimalDigit
+                         / DicimalDigit DicimalDigitsUS
+                         / DicimalDigitsUS DicimalDigit
+
+DecimalDigitsNoStartingUS <- DicimalDigit
+                           / DicimalDigit DicimalDigitsUS
+
+DicimalDigit <- '0'
+              / NonZeroDigit
+
+DicimalDigitUS <- DicimalDigit / '_'
+
+BinaryDigitsUS <- BinaryDigitUS
+                / BinaryDigitUS BinaryDigitsUS
+
+BinaryDigit <- '0' / '1'
+
+BinaryDigitUS <- BinaryDigit / '_'
+
+OctalDigits <- OctalDigit
+             / OctalDigit OctalDigits
+
+OctalDigitsUS <- OctalDigitUS
+               / OctalDigitUS OctalDigitsUS
+
+OctalDigit <- '0' / '1' / '2' / '3' / '4' / '5' / '6' / '7'
+
+OctalDigitUS <- OctalDigit / '_'
+
+HexDigits <- HexDigit
+           / HexDigit HexDigits
+
+HexDigitsUS <- HexDigitUS
+             / HexDigitUS HexDigitsUS
+
+HexDigitsNoSingleUS <- HexDigit
+                     / HexDigit HexDigitsUS
+                     / HexDigitsUS HexDigit
+
+HexDigit <- DecimalDigit / HexLettger
+
+HexLettger <- 'a' / 'b' / 'c' / 'd' / 'e' / 'f'
+            / 'A' / 'B' / 'C' / 'D' / 'E' / 'F'

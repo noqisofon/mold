@@ -1,0 +1,6 @@
+EndOfLine <- \u000D
+           / \u000A
+           / \u000D \u000A
+           / \u2028
+           / \u2029
+           / EndOfFile
